@@ -1,6 +1,9 @@
 import nodemailer from 'nodemailer';
 import XLSX from 'xlsx';
 import { PDFDocument, rgb } from 'pdf-lib';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Email configuration (replace with your email credentials)
 const transporter = nodemailer.createTransport({
