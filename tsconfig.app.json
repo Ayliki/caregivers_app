@@ -9,6 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowImportingTsExtensions": true, 
     "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
     "lib": ["dom", "ES2023"],
     "noEmit": true
   },
