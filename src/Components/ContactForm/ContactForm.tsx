@@ -1,8 +1,9 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik'; // Import FormikHelpers for type definitions
 import * as Yup from 'yup';
 import { Button, Box, Checkbox, FormControlLabel } from '@mui/material';
 import axios from 'axios';
+import dotenv from 'dotenv';
 import './ContactForm.css';
 import { Link } from 'react-router-dom';
 import { FormValues } from '../../interface';
@@ -22,8 +23,10 @@ import WorkDetails from '../WorkDetails/WorkDetails';
 import CriminalAndCarOwnership from '../CriminalAndCarOwnership/CriminalAndCarOwnership';
 import CaredAgeGroup from '../CaredAgeGroup/CaredAgeGroup';
 
+
 const ContactForm: React.FC = () => {
     const initialValues: FormValues = {
+        // Initial form values
         surname: '',
         name: '',
         patronymic: '',
@@ -61,7 +64,7 @@ const ContactForm: React.FC = () => {
         medicalProceduresExperience: [],
         dutiesWillingToPerform: [],
         additionalExperience: '',
-        caregivingExperience: '', // <-- Initial value for caregiving experience
+        caregivingExperience: '',
         declaration: false,
         recommendationDetails: [
             { name: '', phone: '', position: '' },
@@ -85,12 +88,25 @@ const ContactForm: React.FC = () => {
         nationality: Yup.string().required('Национальность обязательна')
     });
 
-    const handleSubmit = async (values: FormValues) => {
+    const handleSubmit = async (
+        values: FormValues,
+        { setSubmitting, setErrors, validateForm }: FormikHelpers<FormValues>
+    ) => {
         try {
-            await axios.post('/api/sendEmail', values); 
-            alert('Form submitted successfully and email sent!');
+            const errors = await validateForm();
+            if (Object.keys(errors).length > 0) {
+                // Trigger alert with validation errors if form is invalid
+                alert('Please fill out all required fields correctly:\n' + Object.values(errors).join('\n'));
+            } else {
+                // If no errors, proceed with form submission
+                await axios.post(`${import.meta.env.VITE_API_URL}/send`, values);
+                alert('Form submitted successfully and email sent!');
+            }
         } catch (error) {
+            console.error("Error submitting form:", error);
             alert('Error submitting form');
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -114,7 +130,6 @@ const ContactForm: React.FC = () => {
                     <CriminalAndCarOwnership values={values} handleChange={handleChange} />
                     <CaredAgeGroup values={values} handleChange={handleChange} />
 
-                    {/* Declaration */}
                     <Box className="form-section">
                         <FormControlLabel
                             control={<Checkbox name="declaration" checked={values.declaration} onChange={handleChange} />}
@@ -141,7 +156,6 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
-
 // import React from 'react';
 // import { Formik, Form } from 'formik';
 // import * as Yup from 'yup';

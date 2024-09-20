@@ -54,6 +54,8 @@ const PersonalDetails: React.FC<Props> = ({ values, handleChange, errors, touche
         helperText={touched.birthDate && errors.birthDate}
       />
     </Box>
+
+    
   );
 };
 
