@@ -1,0 +1,23 @@
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006D6F; /* Teal but darker */
+    padding: 10px 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    color: #008B8D; /* Slightly lighter teal on hover */
+  }
+  
+  .logo img {
+    height: 50px; /* Adjust logo size */
+  }

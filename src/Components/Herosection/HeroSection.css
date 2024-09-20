@@ -1,0 +1,22 @@
+/* Hero Section styles */
+.hero-section {
+    text-align: center;
+    padding: 50px 0;
+  }
+  
+  .hero-section h2 {
+    color: #004d4e; /* Darker teal for title */
+  }
+  
+  .hero-section h6 {
+    color: #007f81; /* Slightly lighter teal for subtitle */
+  }
+  
+  .hero-section button {
+    background-color: #006D6F; /* Dark teal */
+    color: white;
+  }
+  
+  .hero-section button:hover {
+    background-color: #008B8D; /* Lighter teal on hover */
+  }
