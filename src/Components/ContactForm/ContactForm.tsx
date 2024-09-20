@@ -87,10 +87,10 @@ const ContactForm: React.FC = () => {
 
     const handleSubmit = async (values: FormValues) => {
         try {
-            await axios.post('http://localhost:5000/api/send', values);
-            alert('Форма успешно отправлена!');
+            await axios.post('/api/sendEmail', values); 
+            alert('Form submitted successfully and email sent!');
         } catch (error) {
-            alert('Ошибка при отправке формы');
+            alert('Error submitting form');
         }
     };
 
