@@ -37,7 +37,7 @@ export interface FormValues {
     dutiesWillingToPerform: string[];
     additionalExperience: string;
     caregivingExperience: string;
-    lastWorkPlaces: { company: string; position: string; duration: string }[]; // Last workplaces
+    lastWorkPlaces: { company: string; position: string; duration: string }[]; 
     declaration: boolean;
-    recommendationDetails: { name: string; phone: string; position: string }[]; // Recommendation details
+    recommendationDetails: { name: string; phone: string; position: string }[]; 
   }
