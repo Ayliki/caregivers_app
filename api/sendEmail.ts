@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Email configuration (replace with your email credentials)
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -14,43 +13,27 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Generate Excel file from form data
 const generateExcelFile = (data) => {
   const workbook = XLSX.utils.book_new();
   const worksheet = XLSX.utils.json_to_sheet([data]);
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Form Data');
-
-  const excelBuffer = XLSX.write(workbook, {
-    type: 'buffer',
-    bookType: 'xlsx',
-  });
-  return excelBuffer;
+  return XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
 };
 
-// Generate PDF file from form data
 const generatePDFFile = async (data) => {
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([600, 400]);
-  page.drawText(JSON.stringify(data, null, 2), {
-    x: 50,
-    y: 350,
-    size: 12,
-    color: rgb(0, 0, 0),
-  });
-
-  const pdfBytes = await pdfDoc.save();
-  return pdfBytes;
+  page.drawText(JSON.stringify(data, null, 2), { x: 50, y: 350, size: 12, color: rgb(0, 0, 0) });
+  return pdfDoc.save();
 };
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const formData = req.body;
-
     try {
       const excelFile = generateExcelFile(formData);
       const pdfFile = await generatePDFFile(formData);
 
-      // Set up the email
       const mailOptions = {
         from: process.env.EMAIL_USER,
         to: 'recipient_email@gmail.com',
@@ -62,9 +45,7 @@ export default async function handler(req, res) {
         ],
       };
 
-      // Send the email
       await transporter.sendMail(mailOptions);
-
       res.status(200).json({ message: 'Email sent successfully!' });
     } catch (error) {
       console.error('Error sending email:', error);
