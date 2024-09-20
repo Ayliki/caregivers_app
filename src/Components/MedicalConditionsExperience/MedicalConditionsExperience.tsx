@@ -8,7 +8,7 @@ interface Props {
     handleChange: FormikProps<FormValues>['handleChange'];
 }
 
-const MedicalConditionsExperience: React.FC<Props> = ({ values, handleChange }) => {
+const MedicalConditionsExperience: React.FC<Props> = ({ handleChange }) => {
     return (
         <FormGroup>
             <FormLabel component="legend">Опыт работы с больными по диагнозам</FormLabel>

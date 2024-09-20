@@ -9,7 +9,7 @@ interface Props {
   handleChange: FormikProps<FormValues>['handleChange'];
 }
 
-const DutiesWillingToPerform: React.FC<Props> = ({ values, handleChange }) => {
+const DutiesWillingToPerform: React.FC<Props> = ({ handleChange }) => {
   return (
     <FormGroup>
       <FormLabel component="legend">Готовы ли Вы выполнять след. обязанности?</FormLabel>
