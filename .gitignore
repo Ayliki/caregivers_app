@@ -1,25 +1,14 @@
-# Dependency directories
+# Node dependencies
 node_modules/
 
-# Vite build output
-dist/
-
-# Ignore .env files (if you're using environment variables)
-.env
-.env.local
-.env.*.local
-
 # Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+logs/
+*.log
 
-# IDE/editor-specific files (VSCode example)
-.vscode/
-.idea/
+# Build output
+dist/
+build/
 
-# MacOS system files
-.DS_Store
-
-# Build directory for TypeScript
-out/
+# Vercel environment (if you need to ignore some env files)
+.env.local
+.env.development
