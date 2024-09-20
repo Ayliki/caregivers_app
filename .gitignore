@@ -12,3 +12,4 @@ build/
 # Vercel environment (if you need to ignore some env files)
 .env.local
 .env.development
+.vercel
