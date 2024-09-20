@@ -52,6 +52,21 @@
   border-bottom: 2px solid #005757; /* Darker teal for focus */
 }
 
+/* Date of Birth specific styling */
+.MuiTextField-root.date-picker {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.MuiInputLabel-root.date-label {
+  transform: translate(0, -20px) scale(0.75);
+  color: #008080;
+}
+
+.MuiInputBase-root.date-input {
+  padding-top: 24px; /* Space for label */
+}
+
 /* Checkbox and Radio Button styles */
 .MuiCheckbox-root,
 .MuiRadio-root {
