@@ -89,19 +89,19 @@ const ContactForm: React.FC = () => {
         values: FormValues,
         { setSubmitting, setErrors, validateForm }: FormikHelpers<FormValues>
     ) => {
-        // console.log("Submitting form..."); 
+        console.log("Submitting form..."); 
         try {
             const errors = await validateForm();
             if (Object.keys(errors).length > 0) {
-                // console.log('Validation errors:', errors);
+                console.log('Validation errors:', errors);
                 alert('Please fill out all required fields correctly:\n' + Object.values(errors).join('\n'));
             } else {
-                // console.log("Sending form data:", values); 
+                console.log("Sending form data:", values); 
                 await axios.post(`${import.meta.env.VITE_API_URL}/send`, values);
                 alert('Form submitted successfully and email sent!');
             }
         } catch (error) {
-            // console.error("Error submitting form:", error);
+            console.error("Error submitting form:", error);
             alert('Error submitting form');
         } finally {
             setSubmitting(false);

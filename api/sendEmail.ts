@@ -36,7 +36,7 @@ export default async function handler(req, res) {
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: 'recipient_email@gmail.com',
+        to: 'ilyabelov518@gmail.com',
         subject: 'Form Submission',
         text: 'Please find attached the form data.',
         attachments: [
