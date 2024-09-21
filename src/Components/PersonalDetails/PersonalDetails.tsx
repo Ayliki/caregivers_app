@@ -53,6 +53,14 @@ const PersonalDetails: React.FC<Props> = ({ values, handleChange, errors, touche
         error={touched.birthDate && Boolean(errors.birthDate)}
         helperText={touched.birthDate && errors.birthDate}
       />
+      <TextInput
+        name="nationality"
+        label="Национальность"  
+        value={values.nationality}
+        onChange={handleChange}
+        error={touched.nationality && Boolean(errors.nationality)}
+        helperText={touched.nationality && errors.nationality}
+      />
     </Box>
 
     
